@@ -401,13 +401,13 @@ const App = () => {
 
       {/* --- FOOTER --- */}
       <footer className="bg-white py-12 border-t border-[#F3EFD2]">
-        <div className="max-w-7xl mx-auto px-6 text-[#2D2E28]">
-          <div className="flex items-center justify-start mb-8">
-            <div className="w-48 h-24 overflow-hidden flex items-center justify-start">
-              <img src="/logo/Logo_Alltagsbetreuung.png" alt="Alltagsbetreuung Giò Logo" className="w-full h-full object-contain object-left" />
+        <div className="max-w-7xl mx-auto px-6 text-center text-[#2D2E28]">
+          <div className="flex items-center justify-center mb-8">
+            <div className="w-48 h-24 overflow-hidden flex items-center justify-center">
+              <img src="/logo/Logo_Alltagsbetreuung.png" alt="Alltagsbetreuung Giò Logo" className="w-full h-full object-contain" />
             </div>
           </div>
-          <div className="flex flex-wrap justify-start gap-8 mb-8">
+          <div className="flex flex-wrap justify-center gap-8 mb-8">
             {navLinks.map(link => (
               <button 
                 key={link.id} 
@@ -418,7 +418,7 @@ const App = () => {
               </button>
             ))}
           </div>
-          <div className="w-16 h-1 bg-[#F3EFD2] mb-8" />
+          <div className="w-16 h-1 bg-[#F3EFD2] mx-auto mb-8" />
           <p className="text-[#2D2E28]/30 font-bold uppercase tracking-widest text-[10px]">
             © {new Date().getFullYear()} Alltagsbetreuung Giò | Bochum | Alle Rechte vorbehalten
           </p>
