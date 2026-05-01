@@ -16,7 +16,8 @@ import {
   ChevronRight,
   Clock,
   ShieldCheck,
-  Calendar
+  Calendar,
+  Facebook
 } from 'lucide-react';
 
 const App = () => {
@@ -70,11 +71,10 @@ const App = () => {
       {/* --- NAVIGATION --- */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <button onClick={() => scrollTo('hero')} className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-[#84A07F] rounded-xl flex items-center justify-center shadow-md group-hover:rotate-12 transition-transform">
-              <Heart className="text-white w-5 h-5" />
+          <button onClick={() => scrollTo('hero')} className="flex items-center group">
+            <div className={`${scrolled ? 'w-32 h-16' : 'w-48 h-24'} overflow-hidden flex items-center justify-start transition-all duration-500 group-hover:scale-105`}>
+              <img src="/logo/Logo_Alltagsbetreuung.png" alt="Alltagsbetreuung Giò Logo" className="w-full h-full object-contain object-left" />
             </div>
-            <span className="text-lg font-black tracking-tighter text-[#2D2E28]">Gio hilft</span>
           </button>
 
           {/* Desktop Nav */}
@@ -180,6 +180,27 @@ const App = () => {
                 Leistungen entdecken
               </button>
             </div>
+
+            {/* Facebook Link Component */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-10 flex items-center gap-4 justify-center lg:justify-start"
+            >
+              <span className="text-sm font-bold text-[#2D2E28]/60 uppercase tracking-widest">Mehr über uns:</span>
+              <a 
+                href="https://www.facebook.com/share/1EQXG1kvDU/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-[#84A07F] font-bold hover:text-[#2D2E28] transition-colors group"
+              >
+                <div className="w-8 h-8 bg-[#84A07F]/10 rounded-full flex items-center justify-center group-hover:bg-[#84A07F] group-hover:text-white transition-all">
+                  <Facebook size={18} />
+                </div>
+                <span>Facebook</span>
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -379,14 +400,13 @@ const App = () => {
 
       {/* --- FOOTER --- */}
       <footer className="bg-white py-12 border-t border-[#F3EFD2]">
-        <div className="max-w-7xl mx-auto px-6 text-center text-[#2D2E28]">
-          <div className="flex items-center justify-center gap-2.5 mb-8">
-            <div className="w-10 h-10 bg-[#2D2E28] rounded-xl flex items-center justify-center shadow-lg">
-              <Heart className="text-white w-5 h-5" />
+        <div className="max-w-7xl mx-auto px-6 text-[#2D2E28]">
+          <div className="flex items-center justify-start mb-8">
+            <div className="w-48 h-24 overflow-hidden flex items-center justify-start">
+              <img src="/logo/Logo_Alltagsbetreuung.png" alt="Alltagsbetreuung Giò Logo" className="w-full h-full object-contain object-left" />
             </div>
-            <span className="text-2xl font-black tracking-tighter">Gio hilft</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-8 mb-8">
+          <div className="flex flex-wrap justify-start gap-8 mb-8">
             {navLinks.map(link => (
               <button 
                 key={link.id} 
@@ -397,7 +417,7 @@ const App = () => {
               </button>
             ))}
           </div>
-          <div className="w-16 h-1 bg-[#F3EFD2] mx-auto mb-8" />
+          <div className="w-16 h-1 bg-[#F3EFD2] mb-8" />
           <p className="text-[#2D2E28]/30 font-bold uppercase tracking-widest text-[10px]">
             © {new Date().getFullYear()} Alltagsbetreuung Giò | Bochum | Alle Rechte vorbehalten
           </p>
