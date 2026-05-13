@@ -1,24 +1,10 @@
-name: Deploy Website to Strato
-
-on:
-  push:
-    branches:
-      - master 
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4 
-
-      - name: 🚀 Upload to Strato
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5 
+- name: 🚀 Upload to Strato
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 22               
+          port: 21
+          protocol: ftps
           local-dir: ./
           server-dir: /alltagspflege/
-       
