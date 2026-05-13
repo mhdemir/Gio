@@ -21,4 +21,4 @@ jobs:
           port: 22               
           local-dir: ./
           server-dir: /alltagspflege/
-          protocol: sftp  
+       
