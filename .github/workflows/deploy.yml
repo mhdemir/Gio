@@ -1,24 +1,37 @@
-name: Deploy Website to Strato
+name: Build and Deploy to Strato
 
 on:
   push:
     branches:
-      - master 
+      - master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4 
+      - name: 📂 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 🏗️ Install and Build
+        run: |
+          npm install
+          npm run build
+
       - name: 🚀 Upload to Strato
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5 
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21               
-          local-dir: ./
-          server-dir: /alltagspflege/
+          port: 21
           protocol: ftps
-      
+          local-dir: ./dist/    
+          server-dir: /dist/
+          server-path: /       
